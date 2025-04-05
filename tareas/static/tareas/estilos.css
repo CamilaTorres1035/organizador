@@ -128,3 +128,17 @@ p {
 .tipo-Q {
     background-color: #43a047;
 }
+
+.filtros {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.activo {
+    background-color: #5e81ac;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+}

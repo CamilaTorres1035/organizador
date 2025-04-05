@@ -7,6 +7,15 @@
 
 
 {% block content %}
+
+<div class="filtros">
+    <a href="?filtro=todas" class="btn {% if not filtro %}activo{% endif %}">Todas</a>
+<a href="?filtro=hoy" class="btn {% if filtro == 'hoy' %}activo{% endif %}">Hoy</a>
+<a href="?filtro=semana" class="btn {% if filtro == 'semana' %}activo{% endif %}">Semana</a>
+<a href="?filtro=incompleto" class="btn {% if filtro == 'incompleto' %}activo{% endif %}">Incompletas</a>
+
+</div>
+
 <h2>📋 Tareas Pendientes</h2>
 {% for tarea in tareas %}
     {% if not tarea.completada %}
@@ -41,6 +50,7 @@
                 {{ tarea.get_tipo_display }}
             </div>            
             <p><strong>Completada</strong></p>
+            <a href="{% url 'eliminar_tarea' tarea.id %}" class="btn">🗑️ Eliminar</a>
         </div>
     {% endif %}
 {% empty %}

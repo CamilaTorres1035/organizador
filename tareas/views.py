@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Tarea
 from django.utils import timezone
 from .forms import TareaForm
-import datetime
+from datetime import date, timedelta
 
 # Create your views here.
 def registrar_tarea(request):
@@ -17,9 +17,18 @@ def registrar_tarea(request):
     return render(request, 'tareas/registrar.html',{'form': form})
 
 def lista_tareas(request):
-    now = datetime.date.today()
-    tareas = Tarea.objects.filter(fecha_limite__gte=now).order_by('fecha_limite')
-    return render(request, 'tareas/lista.html', {'tareas':tareas})
+    now = date.today()
+    filtro = request.GET.get('filtro')
+    if filtro == "hoy":
+        tareas = Tarea.objects.filter(fecha_limite=now).order_by('fecha_limite')
+    elif filtro == "semana":
+        semana = now + timedelta(days=7)
+        tareas = Tarea.objects.filter(fecha_limite__range=(now, semana)).order_by('fecha_limite')
+    elif filtro == "incompleto":
+        tareas = Tarea.objects.filter(completada = False, fecha_limite__gte=now).order_by('fecha_limite')
+    else:
+        tareas = Tarea.objects.filter(fecha_limite__gte=now).order_by('fecha_limite')
+    return render(request, 'tareas/lista.html', {'tareas': tareas, 'filtro': filtro})
 
 def editar_tarea(request, pk):
     tarea = get_object_or_404(Tarea, pk=pk)
