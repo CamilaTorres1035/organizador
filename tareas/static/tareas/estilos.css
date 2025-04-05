@@ -3,6 +3,7 @@ body {
     background-color: #f2f9ff;
     margin: 0;
     padding: 20px;
+    overflow-x: hidden;
 }
 
 h1, h2 {
@@ -103,4 +104,27 @@ form button {
 /* MENSAJE VACÍO */
 p {
     font-size: 16px;
+}
+
+.tipo-tarea {
+    width: 50px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.tipo-T {
+    background-color: #2196f3;
+}
+
+.tipo-P {
+    background-color: #e53935;
+}
+
+.tipo-Q {
+    background-color: #43a047;
 }
