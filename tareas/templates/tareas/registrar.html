@@ -1,18 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Tarea</title>
-    <link rel="stylesheet" href="{% static 'tareas/estilos.css' %}">
-</head>
-<body>
-    <h1>Registrar nueva Tarea</h1>
-    <form method="post">
+{% extends 'tareas/base.html' %}
+{% load static %}
+
+{% block title %}
+    Registrar Tarea
+{% endblock title %}
+
+{% block content %}
+    <h2>📝 Registrar nueva tarea</h2>
+
+    <form method="post" class="formulario">
         {% csrf_token %}
-        {{form.as_p}} 
-        <button type="submit">Guardar</button>
+        {{ form.as_p }}
+        <button type="submit" class="btn">💾 Guardar</button>
+        <a href="{% url 'lista_tareas' %}" class="btn cancelar">↩️ Volver a la lista</a>
     </form>
-    <a href="{% url 'lista_tareas' %}">volver a la lista</a>
-</body>
-</html>
+{% endblock content %}

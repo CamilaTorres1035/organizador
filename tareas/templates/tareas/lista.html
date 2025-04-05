@@ -1,29 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista Tareas</title>
-    <link rel="stylesheet" href="{% static 'tareas/estilos.css' %}">
+{% extends 'tareas/base.html' %}
 
-</head>
-<body>
-    <h1>Lista de Tareas</h1>
+
+{% block title %}
+    Lista de Tareas
+{% endblock %}
+
+
+{% block content %}
+    <h2>📁 Tareas Pendientes</h2>
+
     
-    <a href="{% url 'registrar_tarea' %}">Registrar nueva tarea</a>
+    {% for tarea in tareas %}
+        <div class="tarjeta-tarea">
+            <h3>{{tarea.titulo}}</h3>
+            <p>{{tarea.descripcion}}</p>
+            <p class="fecha">⏳ Fecha límite: {{tarea.fecha_limite}}</p>
 
-    <ul>
-        
-        {% for tarea in tareas %}
-            <li>
-                <strong>{{tarea.titulo}}</strong> --- Fecha límite: {{tarea.fecha_limite}}
-                <a href="{% url 'editar_tarea' tarea.pk %}">Editar</a>
-                <a href="{% url 'eliminar_tarea' tarea.pk %}">Eliminar</a>
-            </li>
+            <div class="botones">
+                <a href="{% url 'editar_tarea' tarea.id%}" class="btn">✏️ Editar</a>
+                <a href="{% url 'eliminar_tarea' tarea.id%}" class="btn">🗑️ Eliminar</a>
+            </div>
+        </div>
         {% empty %}
-            <li>No hay tareas registradas.</li>
-        {% endfor %}
-            
-    </ul>
-</body>
-</html>
+            <p>No hay tareas pensientes. ¡Empieza agregando una! 📋</p>
+    {% endfor %}
+
+    <a href="{% url 'registrar_tarea' %}" class="btn">➕ agregar nueva tarea</a>
+        
+{% endblock content %}
+    

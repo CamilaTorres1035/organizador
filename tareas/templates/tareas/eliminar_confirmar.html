@@ -1,22 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar</title>
-    <link rel="stylesheet" href="{% static 'tareas/estilos.css' %}">
-</head>
-<body>
-    <h1>¿Estás seguro de que quieres eliminar esta tarea?</h1>
+{% extends 'tareas/base.html' %}
+{% load static %}
 
-<p>{{ tarea.titulo }}</p>
+{% block title %}
+    Eliminar Tarea
+{% endblock title %}
 
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Sí, eliminar</button>
-</form>
+{% block content %}
+    <h2>🗑️ ¿Estás seguro de que quieres eliminar esta tarea?</h2>
 
-<a href="{% url 'lista_tareas' %}">No, volver</a>
+    <div class="tarjeta-tarea">
+        <h3>{{ tarea.titulo }}</h3>
+        <p>{{ tarea.descripcion }}</p>
+        <p class="fecha">⏳ Fecha límite: {{ tarea.fecha_limite }}</p>
+    </div>
 
-</body>
-</html>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn eliminar">✅ Sí, eliminar</button>
+        <a href="{% url 'lista_tareas' %}" class="btn cancelar">❌ No, volver</a>
+    </form>
+{% endblock content %}
