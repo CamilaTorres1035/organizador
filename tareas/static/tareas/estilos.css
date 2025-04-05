@@ -33,8 +33,9 @@ h1, h2 {
 }
 
 .completada {
-    opacity: 0.6;
-    text-decoration: line-through;
+    background-color: #d3f9d8;
+    border-left: 6px solid #2e7d32;
+    opacity: 0.8;
 }
 
 

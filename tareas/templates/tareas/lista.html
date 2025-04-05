@@ -7,28 +7,39 @@
 
 
 {% block content %}
-    <h2>📁 Tareas Pendientes</h2>
-
-    
-    {% for tarea in tareas %}
-        <div class="tarjeta-tarea {% if tarea.completada %}completada{% endif %}">
+<h2>📋 Tareas Pendientes</h2>
+{% for tarea in tareas %}
+    {% if not tarea.completada %}
+        <div class="tarjeta-tarea">
             <h3>{{ tarea.titulo }}</h3>
             <p>{{ tarea.descripcion }}</p>
             <p class="fecha">⏳ Fecha límite: {{ tarea.fecha_limite }}</p>
-        
-            {% if tarea.completada %}
-                <p><strong>✅ Completada</strong></p>
-            {% else %}
-                <div class="botones">
-                    <a href="{% url 'editar_tarea' tarea.id %}" class="btn">✏️ Editar</a>
-                    <a href="{% url 'eliminar_tarea' tarea.id %}" class="btn">🗑️ Eliminar</a>
-                    <a href="{% url 'marcar_completada' tarea.id %}" class="btn">✅ Completar</a>
-                </div>
-            {% endif %}
+            <div class="botones">
+                <a href="{% url 'editar_tarea' tarea.id %}" class="btn">✏️ Editar</a>
+                <a href="{% url 'eliminar_tarea' tarea.id %}" class="btn">🗑️ Eliminar</a>
+                <a href="{% url 'marcar_completada' tarea.id %}" class="btn">✅ Completar</a>
+            </div>
         </div>
-    {% endfor %}
+    {% endif %}
+{% empty %}
+    <p>No hay tareas pendientes.</p>
+{% endfor %}
 
-    <a href="{% url 'registrar_tarea' %}" class="btn">➕ agregar nueva tarea</a>
-        
+<hr>
+
+<h2>✅ Tareas Completadas</h2>
+{% for tarea in tareas %}
+    {% if tarea.completada %}
+        <div class="tarjeta-tarea completada">
+            <h3>{{ tarea.titulo }}</h3>
+            <p>{{ tarea.descripcion }}</p>
+            <p class="fecha">⏳ Fecha límite: {{ tarea.fecha_limite }}</p>
+            <p><strong>Completada</strong></p>
+        </div>
+    {% endif %}
+{% empty %}
+    <p>No hay tareas completadas.</p>
+{% endfor %}
+
 {% endblock content %}
     
