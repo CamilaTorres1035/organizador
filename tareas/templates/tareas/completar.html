@@ -1,0 +1,22 @@
+{% extends 'tareas/base.html' %}
+{% load static %}
+
+{% block title %}
+    Completar Tarea
+{% endblock title %}
+
+{% block content %}
+    <h2>¿Estás seguro de que quieres marcar como completada esta tarea?</h2>
+
+    <div class="tarjeta-tarea">
+        <h3>{{ tarea.titulo }}</h3>
+        <p>{{ tarea.descripcion }}</p>
+        <p class="fecha">⏳ Fecha límite: {{ tarea.fecha_limite }}</p>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn">✅ Sí, completar</button>
+        <a href="{% url 'lista_tareas' %}" class="btn cancelar">❌ No, volver</a>
+    </form>
+{% endblock content %}

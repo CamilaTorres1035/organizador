@@ -32,6 +32,12 @@ h1, h2 {
     background-color: #b2ebf2;
 }
 
+.completada {
+    opacity: 0.6;
+    text-decoration: line-through;
+}
+
+
 .fecha {
     color: #00796b;
     font-weight: bold;

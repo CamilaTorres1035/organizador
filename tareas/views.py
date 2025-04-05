@@ -16,7 +16,7 @@ def registrar_tarea(request):
     return render(request, 'tareas/registrar.html',{'form': form})
 
 def lista_tareas(request):
-    tareas = Tarea.objects.all().order_by('-fecha_limite')
+    tareas = Tarea.objects.all().order_by('fecha_limite')
     return render(request, 'tareas/lista.html', {'tareas':tareas})
 
 def editar_tarea(request, pk):
@@ -39,3 +39,10 @@ def eliminar_tarea(request, pk):
     
     return render(request, 'tareas/eliminar_confirmar.html', {'tarea': tarea})
 
+def marcar_completada(request, pk):
+    tarea = get_object_or_404(Tarea, pk=pk)
+    if request.method == 'POST':
+        tarea.completada = True
+        tarea.save()
+        return redirect('lista_tareas')
+    return render(request, 'tareas/completar.html', {'tarea': tarea})
