@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: mi-app-de-tareas
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn mi_app_de_tareas.wsgi:application"
+    staticPublishPath: staticfiles
