@@ -24,9 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-p@6q0y1zo8^0p*qefk=j6z_&4dm0+_oqj#3lc8e%0+ij9d^dam"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'mi-app-de-tareas.onrender.com']
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CSRF_TRUSTED_ORIGINS = ['https://mi-app-de-tareas.onrender.com']
+
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "clave-insegura-en-dev")
 
 
 # Application definition
