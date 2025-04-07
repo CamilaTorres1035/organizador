@@ -60,3 +60,9 @@ python manage.py runserver
 👩‍💻 Autora
 Camila Torres
 🔗 GitHub: CamilaTorres1035
+
+---
+## 📌 Notas
+- Este proyecto no incluye autenticación de usuarios.
+
+- Base de datos SQLite por defecto (puedes cambiarla en settings.py si deseas usar otra).
