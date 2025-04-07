@@ -38,21 +38,21 @@
 ```bash
 git clone https://github.com/CamilaTorres1035/mi-app-de-tareas.git
 cd mi-app-de-tareas
-
+```
 2. Crea un entorno virtual:
-
+```bash
 python -m venv env
 source env/bin/activate  # en Windows: env\Scripts\activate
-
+```
 3. Instala las dependencias:
-
+```bash
 pip install -r requirements.txt
-
+```
 4. Ejecuta las migraciones y el servidor:
-
+```bash
 python manage.py migrate
 python manage.py runserver
-
+```
 5. Abre en el navegador:
 👉 http://127.0.0.1:8000/
 
