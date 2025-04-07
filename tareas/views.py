@@ -55,6 +55,7 @@ def editar_tarea(request, pk):
     
     return render(request, 'tareas/editar.html', {'form': form})
 
+
 def eliminar_tarea(request, pk):
     tarea = get_object_or_404(Tarea, pk=pk)
     if request.method == 'POST':

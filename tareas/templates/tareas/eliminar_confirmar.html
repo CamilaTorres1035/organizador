@@ -16,7 +16,7 @@
 
     <form method="post">
         {% csrf_token %}
-        <button type="submit" class="btn-guardar eliminar">✅ Sí, eliminar</button>
+        <button type="submit" class="btn-volver eliminar">✅ Sí, eliminar</button>
         <a href="{% url 'lista_tareas' %}" class="btn-volver cancelar">❌ No, volver</a>
     </form>
 {% endblock content %}
