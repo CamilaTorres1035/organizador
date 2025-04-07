@@ -8,6 +8,11 @@
 
 {% block content %}
 
+<form method="get">
+    <input type="text" name="busqueda" placeholder="Buscar tarea..." value="{{ request.GET.busqueda }}">
+    <input type="hidden" name="filtro" value="{{ filtro }}">
+</form>
+
 <div class="filtros">
     <a href="?filtro=todas" class="btn {% if not filtro %}activo{% endif %}">Todas</a>
 <a href="?filtro=hoy" class="btn {% if filtro == 'hoy' %}activo{% endif %}">Hoy</a>
