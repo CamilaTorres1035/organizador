@@ -7,62 +7,60 @@
 
 
 {% block content %}
-
 <form method="get">
-    <input type="text" name="busqueda" placeholder="Buscar tarea..." value="{{ request.GET.busqueda }}">
+    <input class="busqueda" type="text" name="busqueda" placeholder="Buscar tarea..." value="{{ request.GET.busqueda }}">
     <input type="hidden" name="filtro" value="{{ filtro }}">
 </form>
 
 <div class="filtros">
-    <a href="?filtro=todas" class="btn {% if not filtro %}activo{% endif %}">Todas</a>
-<a href="?filtro=hoy" class="btn {% if filtro == 'hoy' %}activo{% endif %}">Hoy</a>
-<a href="?filtro=semana" class="btn {% if filtro == 'semana' %}activo{% endif %}">Semana</a>
-<a href="?filtro=incompleto" class="btn {% if filtro == 'incompleto' %}activo{% endif %}">Incompletas</a>
-
+    <a href="?filtro=todas" class="btn-filtro {% if not filtro %}activo{% endif %}">Todas</a>
+    <a href="?filtro=hoy" class="btn-filtro {% if filtro == 'hoy' %}activo{% endif %}">Hoy</a>
+    <a href="?filtro=semana" class="btn-filtro {% if filtro == 'semana' %}activo{% endif %}">Semana</a>
+    <a href="?filtro=incompleto" class="btn-filtro {% if filtro == 'incompleto' %}activo{% endif %}">Incompletas</a>
 </div>
 
 <h2>📋 Tareas Pendientes</h2>
-{% for tarea in tareas %}
-    {% if not tarea.completada %}
-        <div class="tarjeta-tarea">
-            <h3>{{ tarea.titulo }}</h3>
-            <p>{{ tarea.descripcion }}</p>
-            <p class="fecha">⏳ Fecha límite: {{ tarea.fecha_limite }}</p>
-            <div class="tipo-tarea tipo-{{ tarea.tipo }}">
-                {{ tarea.get_tipo_display }}
-            </div>            
-            <div class="botones">
-                <a href="{% url 'editar_tarea' tarea.id %}" class="btn">✏️ Editar</a>
-                <a href="{% url 'eliminar_tarea' tarea.id %}" class="btn">🗑️ Eliminar</a>
-                <a href="{% url 'marcar_completada' tarea.id %}" class="btn">✅ Completar</a>
+    {% for tarea in tareas %}
+        {% if not tarea.completada %}
+            <div class="tarjeta-tarea">
+                <h3>{{ tarea.titulo }}</h3>
+                <p>{{ tarea.descripcion }}</p>
+                <p class="fecha">⏳ Fecha límite: {{ tarea.fecha_limite }}</p>
+                <div class="tipo-tarea tipo-{{ tarea.tipo }}">
+                    {{ tarea.get_tipo_display }}
+                </div>            
+                <div class="botones-tarea">
+                    <a href="{% url 'editar_tarea' tarea.id %}" class="btn-tarea">✏️ Editar</a>
+                    <a href="{% url 'eliminar_tarea' tarea.id %}" class="btn-tarea">🗑️ Eliminar</a>
+                    <a href="{% url 'marcar_completada' tarea.id %}" class="btn-tarea">✅ Completar</a>
+                </div>
             </div>
-        </div>
-    {% endif %}
-{% empty %}
-    <p>No hay tareas pendientes.</p>
-{% endfor %}
-
-<hr>
-
-<h2>✅ Tareas Completadas</h2>
-{% for tarea in tareas %}
+        {% endif %}-tarea
+    {% empty %}
+        <p>No hay tareas pendientes.</p>
+    {% endfor %}
+    
+    <hr>
+    
+    <h2>✅ Tareas Completadas</h2>
+    {% for tarea in tareas %}
     {% if tarea.completada %}
-        <div class="tarjeta-tarea completada">
-            <h3>{{ tarea.titulo }}</h3>
+    <div class="tarjeta-tarea completada">
+        <h3>{{ tarea.titulo }}</h3>
             <p>{{ tarea.descripcion }}</p>
             <p class="fecha">⏳ Fecha límite: {{ tarea.fecha_limite }}</p>
             <div class="tipo-tarea tipo-{{ tarea.tipo }}">
                 {{ tarea.get_tipo_display }}
             </div>            
             <p><strong>Completada</strong></p>
-            <a href="{% url 'eliminar_tarea' tarea.id %}" class="btn">🗑️ Eliminar</a>
-        </div>
+            <a href="{% url 'eliminar_tarea' tarea.id %}" class="btn-tarea">🗑️ Eliminar</a>
+    </div>
     {% endif %}
-{% empty %}
-    <p>No hay tareas completadas.</p>
-{% endfor %}
-
-<a href="{% url 'registrar_tarea' %}" class="btn">➕ Nueva tarea</a>
+    {% empty %}
+        <p>No hay tareas completadas.</p>
+    {% endfor %}
+        
+<a href="{% url 'registrar_tarea' %}" class="btn-agregar">➕ Nueva tarea</a>
 
 {% endblock content %}
     

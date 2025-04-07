@@ -11,7 +11,7 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn">💾 Guardar cambios</button>
-        <a href="{% url 'lista_tareas' %}" class="btn cancelar">❌ Cancelar</a>
+        <button type="submit" class="btn-guardar">💾 Guardar cambios</button>
+        <a href="{% url 'lista_tareas' %}" class="btn-volver cancelar">❌ Cancelar</a>
     </form>
 {% endblock content %}
