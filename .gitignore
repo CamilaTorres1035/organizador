@@ -1,0 +1,37 @@
+# Entorno virtual
+venv/
+env/
+ENV/
+
+# Archivos de VS Code
+.vscode/
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Archivos de migraciones (opcional)
+**/migrations/*.py
+!**/migrations/__init__.py
+**/migrations/__pycache__/
+
+# Archivos de base de datos SQLite
+*.sqlite3
+
+# Archivos de entorno
+.env
+
+# Archivos temporales
+*.log
+*.pot
+*.mo
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Archivos compilados por Django
+staticfiles/
+media/
