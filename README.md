@@ -17,7 +17,7 @@
 
 ## 🖼️ Vista previa
 
-<img src="https://github.com/CamilaTorres1035/mi-app-de-tareas/blob/main/preview.png" alt="Vista previa de la app" width="600"/>
+<img src="https://github.com/CamilaTorres1035/organizador/blob/main/preview.png" alt="Vista previa de la app" width="600"/>
 
 > 💡 _Guarda esta imagen como `preview.png` en la raíz del repositorio para que se muestre correctamente._
 
