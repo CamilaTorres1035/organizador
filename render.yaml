@@ -3,5 +3,5 @@ services:
     name: mi-app-de-tareas
     env: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn organizador.wsgi:application"
+    startCommand: "gunicorn organizador.wsgi"
     staticPublishPath: staticfiles
