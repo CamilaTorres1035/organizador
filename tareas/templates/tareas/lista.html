@@ -35,7 +35,7 @@
                     <a href="{% url 'marcar_completada' tarea.id %}" class="btn-tarea">✅ Completar</a>
                 </div>
             </div>
-        {% endif %}-tarea
+        {% endif %}
     {% empty %}
         <p>No hay tareas pendientes.</p>
     {% endfor %}
